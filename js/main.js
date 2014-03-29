@@ -11,6 +11,10 @@ var init = function () {
     	links[i].addEventListener('ontouchstart', scrollPages)
     }
 
+    var element = document.getElementById('page3');
+    var hammertime = Hammer(element).on("swiperight", function(event) {
+    	scrollPages("first")
+    });
 };
 // window.onload can work without <body onload="">
 window.onload = init;

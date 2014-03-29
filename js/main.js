@@ -1,6 +1,6 @@
 var currPage = "first";
 var prevScreen = false;
-
+var addButtState = "folded";
 var init = function () {
 
     console.log("init() called");
@@ -45,6 +45,16 @@ function scrollPages(target, data){
 	} else {
 		prevScreen = true;
 	}
+}
+function foldUnfold(){
+	if (addButtState == "folded"){
+		addButtState = "unfolded"
+		addingButton.className = "from_fold_to_unfold "+ addButtState;
+	} else {
+		addButtState = "folded";
+		addingButton.className = "from_unfold_to_fold "+ addButtState;
+	}
+	console.log("fold called")
 }
 
 // Remove

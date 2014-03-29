@@ -1,0 +1,63 @@
+/*             Page Animation Styles              */
+.on_first{
+	left: -360px;
+}
+.on_second{
+	left: -720px;
+}
+.on_third{
+	left: 0px;
+}
+.from_first_to_second{
+	-webkit-animation: a_from_first_to_second 0.2s linear;
+}
+@-webkit-keyframes a_from_first_to_second {
+	0% {left: -360px}
+	100% {left: -720px}
+}
+
+.from_first_to_third{
+	-webkit-animation: a_from_first_to_third 0.2s linear;
+}
+@-webkit-keyframes a_from_first_to_third {
+	0% {left: -360px}
+	100% {left: 0px}
+}
+
+.from_third_to_first{
+	-webkit-animation: a_from_third_to_first 0.2s linear;
+}
+@-webkit-keyframes a_from_third_to_first {
+	0% {left: 0px}
+	100% {left: -360px}
+}
+
+.from_second_to_first{
+	-webkit-animation: a_second_to_first 0.2s linear;
+}
+@-webkit-keyframes a_second_to_first {
+	0% {left: -720px}
+	100% {left: -360px}
+}
+
+/*             Adding Animation Styles              */
+.folded{
+	top: 580px;
+}
+.unfolded{
+	top: 0px;
+}
+.from_fold_to_unfold{
+	-webkit-animation: a_second_to_first 0.2s linear;
+}
+@-webkit-keyframes a_from_fold_to_unfold {
+	0% {top: 580px}
+	100% {top: 0px}
+}
+.from_unfold_to_fold{
+	-webkit-animation: a_second_to_first 0.2s linear;
+}
+@-webkit-keyframes a_from_unfold_to_fold {
+	0% {top: 0px}
+	100% {top: 580px}
+}

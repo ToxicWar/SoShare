@@ -7,7 +7,7 @@ function drawOnCanvasAsQR(canvas, text) {
 	if (canvas.width != w) canvas.width = w;
 	if (canvas.height != h) canvas.height = h;
 	
-	var qr = qrcode(1, 'L');
+	var qr = qrcode(5, 'L');
 	qr.addData(text);
 	qr.make();
 	var c = qr.getModuleCount();

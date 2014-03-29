@@ -130,7 +130,8 @@ footer p {
 }
 .page{
 	width: 360px;
-	height: 100%;
+	height: 610px;
+	overflow: hidden;
 }
 /*             Link Block Styles              */
 .linkBlockWrapper{
@@ -141,53 +142,58 @@ footer p {
 	width: 60px;
 	height: 60px;
 	margin: 15px;
-	background: red;
 }
 /*              Main Page Styles             */
+.nav{
+	height:60px;
+
+}
+.mainHeadButton{
+	width: 50%;
+	height: 50px;
+	padding-top: 25px;
+}
+#showForeignListButt{
+	border-left: 1px solid #888;
+	margin-left: -1px;
+}
+.mainPageWrapper{
+	margin-top: 20px;
+	height: 300px;
+}
 .mainAddingButton{
 	font-size: 12pt;
-}
-/*              Animation Styles              */
-.on_first{
-	left: -360px;
-}
-.on_second{
-	left: -720px;
-}
-.on_third{
-	left: 0px;
-}
-.from_first_to_second{
-	-webkit-animation: a_from_first_to_second 0.2s linear;
-}
-@-webkit-keyframes a_from_first_to_second {
-	0% {left: -360px}
-	100% {left: -720px}
+	background: grey;
 }
 
-.from_first_to_third{
-	-webkit-animation: a_from_first_to_third 0.2s linear;
+.listElem{
+	width: 100%;
+	height: 90px;
+	border: 1px solid grey;
+	overflow: visible;
 }
-@-webkit-keyframes a_from_first_to_third {
-	0% {left: -360px}
-	100% {left: 0px}
+.listElemIcon{
+	width: 72px;
+	height: 70px;
+	margin: 10px;
+	background: blue;
 }
+.listElemText{
+	width:100%	
+}
+.listElemArrow{
+	width: 50px;
+	height: 50px;
+	padding-top:20px;
+}
+/*          Main Adding Block Styles          */
+.mainAddingBlock{
+	height: 640px;
+	width: 360px;
+	position: absolute;
+	background: #ebebeb;
+} 
 
-.from_third_to_first{
-	-webkit-animation: a_from_third_to_first 0.2s linear;
-}
-@-webkit-keyframes a_from_third_to_first {
-	0% {left: 0px}
-	100% {left: -360px}
-}
-
-.from_second_to_first{
-	-webkit-animation: a_second_to_first 0.2s linear;
-}
-@-webkit-keyframes a_second_to_first {
-	0% {left: -720px}
-	100% {left: -360px}
-}
 /*             Canvas Page Styles             */
 .canvas{
 	margin:10px;

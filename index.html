@@ -8,7 +8,8 @@
     <title>Tizen Web IDE - Tizen - Tizen basic Application</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/animations.css"/>
+	<script src="js/main.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/qr_on_canvas.js"></script>
     <script src="js/qrcode/qrcode.js"></script>
@@ -29,21 +30,35 @@
 </div>
                                        <!-- main screen -->
 <div class="page f_l" id="page1">
-	<nav>
-      <h1>Tizen app</h1>
-      <h1>Не Tizen app</h1>
-	</nav>
+	<div class="nav">
+      <div class="mainHeadButton f_l" id="showMyListButt">
+      	<center>Tizen app</center>
+      </div>
+      <div class="mainHeadButton f_l" id="showForeignListButt">
+      	<center>Не Tizen app</center>
+      </div>
+	</div>
 	
 	<div class="mainPageWrapper">
 		<div id="mainPageContent">
-			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','jaksdnijadbn')">
-				Ссылки
+			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','http://vk.com/sdsdsdsd')">
+				<div class="listElem">
+					<div class="listElemIcon f_l">
+					</div>
+					<div class="listElemContent f_l">
+						<p class="listElemText listElemTitle">Павел Дуров</p>
+						<p class="listElemText listElemDescription">http://vk.com/id1</p>
+					</div>
+					<div class="listElemArrow f_r">
+					 >
+					</div>
+				</div>
 			</div>
 			<div class="linksList" id="foreignLinks"></div>
 		</div>
 	</div>
-	<div class="mainAddingButton" id="addMyLinkButton">
-		Сканировать
+	<div class="mainAddingBlock folded" id="addingButton" ontouchstart="foldUnfold()">
+		<center>Добавить ссылку</center>
 	</div>
 </div>
                                          <!-- canvas screen -->

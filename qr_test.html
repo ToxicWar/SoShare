@@ -1,8 +1,15 @@
 <script src="./js/qrcode/qrcode.js"></script>
 <script src="./js/qr_on_canvas.js"></script>
-<canvas id="canvas" style="width:128px; height:128px; outline:1px solid;"></canvas>
+<canvas id="canvas" style="width:148px; height:148px; outline:1px solid; background:gray;"></canvas>
 <script>
-	var stt = new Date().getTime();
-	for (var i=0; i<100; i++) drawOnCanvasAsQR(canvas, "blabla");
-	alert((new Date().getTime()-stt)/100+"ms");
+	setTimeout(function() {
+		var stt = new Date().getTime();
+		for (var i=0; i<500; i++) drawOnCanvasAsQR(canvas, "blabla");
+		alert((new Date().getTime()-stt)/500+"ms (draw)");
+	},1);
+	setTimeout(function() {
+		var stt = new Date().getTime();
+		for (var i=0; i<500; i++) writeToCanvasAsQR(canvas, "blabla");
+		alert((new Date().getTime()-stt)/500+"ms (write)");
+	},1);
 </script>

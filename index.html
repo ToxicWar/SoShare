@@ -29,9 +29,11 @@
 </div>
                                        <!-- main screen -->
 <div class="page f_l" id="page1">
-	<header>
-	    	Мои ссылки Не мои ссылки
-	</header>
+	<nav>
+      <h1>Tizen app</h1>
+      <h1>Не Tizen app</h1>
+	</nav>
+	
 	<div class="mainPageWrapper">
 		<div id="mainPageContent">
 			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','jaksdnijadbn')">
@@ -40,12 +42,12 @@
 			<div class="linksList" id="foreignLinks"></div>
 		</div>
 	</div>
+	<div class="mainAddingButton" id="addMyLinkButton">
+		Сканировать
+	</div>
 </div>
                                          <!-- canvas screen -->
 <div class="page f_l" id="page2">
-  <header>
-      <h1>Tizen app</h1>
-  </header>
 
 		<canvas id="QRcanvas" class="canvas"></canvas>
   	<button ontouchstart="scrollPages('first')"><---</button>

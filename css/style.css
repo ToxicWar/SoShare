@@ -143,6 +143,10 @@ footer p {
 	margin: 15px;
 	background: red;
 }
+/*              Main Page Styles             */
+.mainAddingButton{
+	font-size: 12pt;
+}
 /*              Animation Styles              */
 .on_first{
 	left: -360px;

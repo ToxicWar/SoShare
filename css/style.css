@@ -120,17 +120,17 @@ footer p {
 /*              ---------               */
 #screen{
 	width: 360px;
-	height: 610px;
+	height: 100%;
 	overflow: hidden;
 }
 #wrapper{
 	width: 1080px;
-	height: 610px;
+	height: 100%;
 	position: relative;
 }
 .page{
 	width: 360px;
-	height: 610px;
+	height: 100%;
 }
 /*             Link Block Styles              */
 .linkBlockWrapper{
@@ -183,6 +183,11 @@ footer p {
 @-webkit-keyframes a_second_to_first {
 	0% {left: -720px}
 	100% {left: -360px}
+}
+/*             Canvas Page Styles             */
+.canvas{
+	height: 360px;
+	width: 360px;
 }
 /*                Global Styles               */
 .f_l{

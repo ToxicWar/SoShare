@@ -38,7 +38,7 @@ function tizenhwkey(e){
 function scrollPages(target, data){
 	scroller = document.getElementById("wrapper");
 	if (target=="second" && data != undefined){
-		generateQR(data)
+		drawOnCanvasAsQR(QRcanvas, data)
 	}
 	wrapper.className = "from_"+currPage+"_to_"+target+" on_"+ target;
 	currPage = target;
@@ -51,10 +51,6 @@ function scrollPages(target, data){
 	}
 }
 	
-function generateQR(data){
-	//TODO
-}
-
 // Remove
 function testWrite(){
 	var elem = document.getElementById("test-name");

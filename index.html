@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script src="js/main.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/qr_on_canvas.js"></script>
+    <script src="js/qrcode/qrcode.js"></script>
 </head>
 
 <body>
@@ -62,7 +64,7 @@
       <p>The following button displays a time using JavaScript.</p>
       <div id="divbutton1">
         <button ontouchstart="scrollPages('third')">Clock</button>
-        <button ontouchstart="scrollPages('second')">----></button>
+        <button ontouchstart="scrollPages('second','http:/vk.com')">----></button>
       </div>
     </section>
   </article>
@@ -77,7 +79,7 @@
       <h1>Tizen app</h1>
   </header>
 
-		<canvas id="c" class="canvas"></canvas>
+		<canvas id="QRcanvas" class="canvas"></canvas>
   	<button ontouchstart="scrollPages('first')"><---</button>
 </div>
 

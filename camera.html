@@ -63,7 +63,9 @@
 			//    ищет канвас с id='qr-canvas',
 			//    распознаёт с getImageData канваса
 			// ИМХО пара новых канвасов в секунду - не лучшая идея, поэтому вариант (2)
-			this.img.style.display = 'none';
+			this.img.style.position = 'fixed';
+			this.img.style.top = this.img.style.left = 0;
+			//this.img.style.display = 'none';
 			document.body.appendChild(this.img); // а это чтоб getElementById его нашёл
 		}
 	
@@ -86,7 +88,7 @@
 	
 		SelfCamera.prototype.startPreview = function startPreview() {
 			var options = {
-				audio: true,
+				audio: false, // FALSE THIS!!!
 				video: true
 			};
 	
@@ -102,7 +104,7 @@
 	
 		};
 	
-		SelfCamera.prototype.captureImage = function captureImage() {
+		SelfCamera.prototype.captureImage = function captureImage(w) {
 			/*var sourceWidth = window.innerWidth,
 				sourceHeight = window.innerHeight,
 				sourceX = (sourceWidth - $(video).width()) / 2,
@@ -114,11 +116,16 @@
 			// Crop image to viewport dimension
 			this.img.getContext('2d').drawImage(video, sourceX, sourceY, $(video).width(), $(video).height());*/
 	
-			// To get best available dimension
-			this.img.width = this.video.videoWidth;
-			this.img.height = this.video.videoHeight;
-			this.img.getContext('2d').drawImage(this.video, 0, 0);
-			qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
+			if (w && w < this.video.videoWidth) {
+				this.img.width = w;
+				this.img.height = w / this.video.videoWidth * this.video.videoHeight;
+			}
+			var rc = this.img.getContext('2d');
+			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
+			rc.drawImage(this.video, 0, 0);
+			try {
+				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
+			} catch(e) {}
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {
@@ -156,7 +163,7 @@
 		SelfCamera.prototype.bindVideoEvents = function () {
 			this.video.onstalled = function(e){ this.load(); };
 			this.video.onplaying = this.resizeVideo.bind(this);
-			this.video.onclick = this.captureImage.bind(this);//function(){ this.play(); };
+			this.video.onclick = function(e){ e.preventDefault(); this.captureImage() }.bind(this);//function(){ this.play(); };
 		};
 	
 		SelfCamera.prototype.bindEvents = function bindEvents() {
@@ -166,7 +173,7 @@
 			//	previewLock = false;
 			//});
 	
-			$('shutter').mousedown(function (ev) {
+			/*$('shutter').mousedown(function (ev) {
 				$('shutter').addClass('active');
 			}).mouseup(function (ev) {
 				$('shutter').removeClass('active');
@@ -174,7 +181,7 @@
 				$('shutter').addClass('active');
 			}).on('touchend', function (ev) {
 				$('shutter').removeClass('active');
-			});
+			});*/
 	
 			window.ontizenhwkey = function (e) {
 				if (e.originalEvent.keyName === "back") {
@@ -190,11 +197,12 @@
 			var self = this;
 			self.startPreview();
 			self.bindEvents();
+			setInterval(function(){ self.captureImage(320) }, 1000);
 		};
 	
 	}());
 	
-	selfCamera = new SelfCamera(function(data){ console.log(data) });
+	selfCamera = new SelfCamera(function(data){ alert(data) });
 	document.onload = selfCamera.init();
 
 </script>

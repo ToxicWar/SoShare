@@ -187,8 +187,11 @@ footer p {
 /*             Canvas Page Styles             */
 .canvas{
 	margin:10px;
-	height: 360px;
+	/*height: 360px;
 	width: 360px;
+	*/
+	height: 340px;
+	width: 340px;
 }
 /*                Global Styles               */
 .f_l{

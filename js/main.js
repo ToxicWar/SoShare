@@ -1,30 +1,22 @@
 var currPage = "first";
 var prevScreen = false;
 
-//Initialize function
 var init = function () {
-    // TODO:: Do your initialization job
+
     console.log("init() called");
-    // add eventListener for tizenhwkey
-    //document.addEventListener('tizenhwkey', function(e) {
-    //    if(e.keyName == "back")
-    //        tizen.application.getCurrentApplication().exit();
-    //});
+
     document.addEventListener('tizenhwkey', tizenhwkey);
     links = document.getElementsByClassName("link")
     for (i = 0; i < links.lengh; i++){
     	links[i].addEventListener('ontouchstart', scrollPages)
     }
-    // Remove
-    var text = window.localStorage.test || "";
-    var elem = document.getElementById("test-storage");
-    elem.innerText = text;
-    // End remove
+
 };
 // window.onload can work without <body onload="">
 window.onload = init;
 
 function tizenhwkey(e){
+	 console.log("tizen key pressed");
 	if(e.keyName == "back"){
 		if(!prevScreen) {
 			tizen.application.getCurrentApplication().exit();
@@ -50,7 +42,7 @@ function scrollPages(target, data){
 		prevScreen = true;
 	}
 }
-	
+
 // Remove
 function testWrite(){
 	var elem = document.getElementById("test-name");

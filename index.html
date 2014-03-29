@@ -12,11 +12,15 @@
     <script src="js/storage.js"></script>
     <script src="js/qr_on_canvas.js"></script>
     <script src="js/qrcode/qrcode.js"></script>
+    
+	<script src="js/jqm.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jqm.css"/>
 </head>
 
 <body>
 <div id="screen">
 <div id="wrapper" class="on_first">
+                                       <!-- adding new link screen -->
 <div class="page f_l" id="page3">
 	<div class="linkBlockWrapper">
 		<div class="linkBlock f_l link"></div>
@@ -25,55 +29,21 @@
 		<div class="linkBlock f_l" id="addnew" ontouchstart="scrollPages('second', this)"></div>
 	</div>
 </div>
+                                       <!-- main screen -->
 <div class="page f_l" id="page1">
-  <header>
-    <hgroup>
-      <h1>Tizen app</h1>
-      <h2>Page 1</h2>
-      <p id="test-storage"></p>
-      <form>
-		<input id="test-name" type="text"/>
-		<button id="test-button" onclick="testWrite()">Save</button>
-      </form>
-    </hgroup>
-  </header>
-
-  <nav>
-    <ul>
-       <li><a href="#">Home</a></li>
-       <li><a href="#">About Us</a></li>
-       <li><a href="#">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <article>
-    <header>
-      <h1>
-        <img src="images/tizen_32.png" width="32"/> Application Name
-      </h1>
-    </header>
-    <p>This is an empty template of Tizen Web Application. Tizen will support multiple device categories:
-      <ul>
-        <li>smartphones, tablets and smart TVs
-        <li>netbooks, in-vehicle infotainment devices
-      </ul>
-    </p>
-    <img src="https://github.com/fluidicon.png"></img>
-    <section>
-      <p>This is a basic section of a document.</p>
-      <p>The following button displays a time using JavaScript.</p>
-      <div id="divbutton1">
-        <button ontouchstart="scrollPages('third')">Clock</button>
-        <button ontouchstart="scrollPages('second','http:/vk.com')">----></button>
-      </div>
-    </section>
-  </article>
-
-  <footer>
-    <p>&copy; 2012 Company Name. All rights reserved.</p>
-  </footer>    
-
+	<header>
+	    	Мои ссылки Не мои ссылки
+	</header>
+	<div class="mainPageWrapper">
+		<div id="mainPageContent">
+			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','jaksdnijadbn')">
+				Ссылки
+			</div>
+			<div class="linksList" id="foreignLinks"></div>
+		</div>
+	</div>
 </div>
+                                         <!-- canvas screen -->
 <div class="page f_l" id="page2">
   <header>
       <h1>Tizen app</h1>

@@ -11,7 +11,7 @@ var init = function () {
     	links[i].addEventListener('ontouchstart', scrollPages)
     }
 
-    var element = document.getElementById('page3');
+    var element = document.getElementById('page2');
     var hammertime = Hammer(element).on("swiperight", function(event) {
     	scrollPages("first")
     });

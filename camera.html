@@ -5,27 +5,67 @@
 <title>Insert title here</title>
 </head>
 <script src="js/libs/jquery.min.js"></script>
+<!-- ШАРАХ! -->
+<script src="./js/libs/qrdecode/grid.js"></script>
+<script src="./js/libs/qrdecode/version.js"></script>
+<script src="./js/libs/qrdecode/detector.js"></script>
+<script src="./js/libs/qrdecode/formatinf.js"></script>
+<script src="./js/libs/qrdecode/errorlevel.js"></script>
+<script src="./js/libs/qrdecode/bitmat.js"></script>
+<script src="./js/libs/qrdecode/datablock.js"></script>
+<script src="./js/libs/qrdecode/bmparser.js"></script>
+<script src="./js/libs/qrdecode/datamask.js"></script>
+<script src="./js/libs/qrdecode/rsdecoder.js"></script>
+<script src="./js/libs/qrdecode/gf256poly.js"></script>
+<script src="./js/libs/qrdecode/gf256.js"></script>
+<script src="./js/libs/qrdecode/decoder.js"></script>
+<script src="./js/libs/qrdecode/qrcode.js"></script>
+<script src="./js/libs/qrdecode/findpat.js"></script>
+<script src="./js/libs/qrdecode/alignpat.js"></script>
+<script src="./js/libs/qrdecode/databr.js"></script>
+<!-- end ШАРАХ! -->
 <script>
 	var selfCamera;
-	function SelfCamera() {};
+	function SelfCamera(qrCallback) {
+		qrcode.callback = qrCallback;
+	};
 
 	(function () {
 		//var previewLock = false;
 	
 		SelfCamera.prototype = {
 			countdownTimeoutID: -1,
-			img: document.createElement('canvas'),
+			img: null,
 			//filename: '',
 			video: null,
 			src: null,
+			onQR: null,
 			isMediaWorking: false
 		};
 	
 		SelfCamera.prototype.onCaptureVideoSuccess = function onCaptureVideoSuccess(stream) {
 			var urlStream = window.webkitURL.createObjectURL(stream);
 			this.isMediaWorking = true;
+			this.createCanvas();
 			this.createVideoElement(urlStream);
 		};
+		
+		SelfCamera.prototype.createCanvas = function() {
+			this.img = document.createElement('canvas');
+			this.img.id = 'qr-canvas';
+			// что это за id, и пара слов о самой распознавалке:
+			// не знаю, чем они там обкуривались, но декодер работает двумя способами:
+			// 1) принимает путь к картинке с куером или её base64,
+			//    создаёт НОВУЮ КАРТИНКУ с переданным src,
+			//    создаёт НОВЫЙ КАНВАС, рисует на него картинку,
+			//    распознаёт с getImageData канваса
+			// 2) принимает ничего,
+			//    ищет канвас с id='qr-canvas',
+			//    распознаёт с getImageData канваса
+			// ИМХО пара новых канвасов в секунду - не лучшая идея, поэтому вариант (2)
+			this.img.style.display = 'none';
+			document.body.appendChild(this.img); // а это чтоб getElementById его нашёл
+		}
 	
 		SelfCamera.prototype.createVideoElement = function (src) {
 			var video = document.createElement('video');
@@ -62,8 +102,8 @@
 	
 		};
 	
-		SelfCamera.prototype.captureImage = function captureImage(video) {
-			var sourceWidth = window.innerWidth,
+		SelfCamera.prototype.captureImage = function captureImage() {
+			/*var sourceWidth = window.innerWidth,
 				sourceHeight = window.innerHeight,
 				sourceX = (sourceWidth - $(video).width()) / 2,
 				sourceY = (sourceHeight - $(video).height()) / 2;
@@ -72,12 +112,13 @@
 			this.img.height = sourceHeight;
 	
 			// Crop image to viewport dimension
-			this.img.getContext('2d').drawImage(video, sourceX, sourceY, $(video).width(), $(video).height());
+			this.img.getContext('2d').drawImage(video, sourceX, sourceY, $(video).width(), $(video).height());*/
 	
 			// To get best available dimension
-			// this.img.width = video.videoWidth;
-			// this.img.height = video.videoHeight;
-			// this.img.getContext('2d').drawImage(video, 0, 0);
+			this.img.width = this.video.videoWidth;
+			this.img.height = this.video.videoHeight;
+			this.img.getContext('2d').drawImage(this.video, 0, 0);
+			qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {
@@ -115,7 +156,7 @@
 		SelfCamera.prototype.bindVideoEvents = function () {
 			this.video.onstalled = function(e){ this.load(); };
 			this.video.onplaying = this.resizeVideo.bind(this);
-			//this.video.onclick = function(){ this.play(); };
+			this.video.onclick = this.captureImage.bind(this);//function(){ this.play(); };
 		};
 	
 		SelfCamera.prototype.bindEvents = function bindEvents() {
@@ -151,10 +192,10 @@
 			self.bindEvents();
 		};
 	
-		}());
+	}());
 	
-		selfCamera = new SelfCamera();
-		document.onload = selfCamera.init();
+	selfCamera = new SelfCamera(function(data){ console.log(data) });
+	document.onload = selfCamera.init();
 
 </script>
 <body style="margin: 0; overflow: hidden;">

@@ -10,31 +10,31 @@
 	function SelfCamera() {};
 
 	(function () {
-		var previewLock = false;
+		//var previewLock = false;
 	
 		SelfCamera.prototype = {
 			countdownTimeoutID: -1,
 			img: document.createElement('canvas'),
-			filename: '',
+			//filename: '',
 			video: null,
 			src: null,
 			isMediaWorking: false
 		};
 	
 		SelfCamera.prototype.onCaptureVideoSuccess = function onCaptureVideoSuccess(stream) {
-			var urlStream;
-			urlStream = window.webkitURL.createObjectURL(stream);
+			var urlStream = window.webkitURL.createObjectURL(stream);
 			this.isMediaWorking = true;
 			this.createVideoElement(urlStream);
 		};
 	
 		SelfCamera.prototype.createVideoElement = function (src) {
-			this.video = $('<video/>', {
-				autoplay: 'autoplay',
-				id: 'video',
-				style: 'height:' + $(window).height() + 'px',
-				src: src
-			}).appendTo("#camera").get(0);
+			var video = document.createElement('video');
+			//video.id = 'video';
+			video.autoplay = 'autoplay';
+			video.style.height = window.innerHeight + 'px';
+			video.src = src;
+			camera.appendChild(video);
+			this.video = video;
 	
 			this.bindVideoEvents();
 		};
@@ -83,11 +83,12 @@
 		SelfCamera.prototype.resizeVideo = function() {
 			var w = this.video.videoWidth,
 				h = this.video.videoHeight,
-				W = $(window).width(),
-				H = $(window).height(),
+				W = window.innerWidth,
+				H = window.innerHeight,
 				wide = w/h >= W/H,
 				margin,
-				size;
+				size,
+				vs = this.video.style;
 			if (w <= 0 || h <= 0) {
 				setTimeout(this.resizeVideo.bind(this), 100); // wait for stream
 				return;
@@ -95,42 +96,34 @@
 			if (wide) {
 				size = Math.round(w * H / h);
 				margin = (W - size) / 2,
-				$(this.video).css({
-					'margin-left': margin + 'px',
-					'margin-top':       0 + 'px',
-					'width':  size + 'px',
-					'height':    H + 'px'
-				});
+				vs.marginLeft = margin + 'px';
+				vs.marginTop  = 0;
+				vs.width  = size + 'px';
+				vs.height =    H + 'px';
 			} else {
 				size = Math.round(h * W / w);
 				margin = (H - size) / 2,
-				$(this.video).css({
-					'margin-left':      0 + 'px',
-					'margin-top':  margin + 'px',
-					'width':     W + 'px',
-					'height': size + 'px'
-				});
+				vs.marginLeft = 0;
+				vs.marginTop  = margin + 'px';
+				vs.width  =    W + 'px';
+				vs.height = size + 'px';
 			}
-			$('#camera').css({
-				'width':  W + 'px',
-				'height': H + 'px'
-			});
+			camera.style.width  = W + 'px';
+			camera.style.height = H + 'px';
 		}
 	
 		SelfCamera.prototype.bindVideoEvents = function () {
-			$(this.video).on("stalled", function (e) {
-				this.load();
-			});
-			$(this.video).on("playing", this.resizeVideo.bind(this));
-			$(this.video).on('click', function () { this.play(); });
+			this.video.onstalled = function(e){ this.load(); };
+			this.video.onplaying = this.resizeVideo.bind(this);
+			//this.video.onclick = function(){ this.play(); };
 		};
 	
 		SelfCamera.prototype.bindEvents = function bindEvents() {
 			var self = this;
 	
-			document.addEventListener('webkitvisibilitychange', function (event) {
-				previewLock = false;
-			});
+			//document.addEventListener('webkitvisibilitychange', function (event) {
+			//	previewLock = false;
+			//});
 	
 			$('shutter').mousedown(function (ev) {
 				$('shutter').addClass('active');
@@ -142,14 +135,14 @@
 				$('shutter').removeClass('active');
 			});
 	
-			$(window).on('tizenhwkey', function (e) {
+			window.ontizenhwkey = function (e) {
 				if (e.originalEvent.keyName === "back") {
 					if (self.countdownTimeoutID !== -1) {
 					} else {
 						tizen.application.getCurrentApplication().exit();
 					}
 				}
-			});
+			};
 		};
 	
 		SelfCamera.prototype.init = function init() {
@@ -164,7 +157,7 @@
 		document.onload = selfCamera.init();
 
 </script>
-<body>
-   <div id="camera"></div>
+<body style="margin: 0; overflow: hidden;">
+	<div id="camera"></div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-var STORAGE = (function () {
+var Storage = (function () {
 	var storage = {};
 	storage.setVariable = function(name, data){
 		window.localStorage[name] = data;

@@ -1,3 +1,11 @@
+var typeNumbers = [0, 17, 32, 53, 78, 106, 134, 154, 192, 230, 271];
+
+function getBestTypeNumberForLength(len) {
+	var i = 0;
+	while (len > typeNumbers[++i]) {}
+	return i;
+}
+
 function drawOnCanvasAsQR(canvas, text) {
 	var rc = canvas.rc || canvas.getContext("2d");
 	var s = window.devicePixelRatio || 1;
@@ -7,7 +15,10 @@ function drawOnCanvasAsQR(canvas, text) {
 	if (canvas.width != w) canvas.width = w;
 	if (canvas.height != h) canvas.height = h;
 	
-	var qr = qrcode(5, 'L');
+
+	var typeNumber = getBestTypeNumberForLength(text.length);
+	var qr = qrcode(typeNumber, 'L');
+
 	qr.addData(text);
 	qr.make();
 	var c = qr.getModuleCount();

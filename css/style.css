@@ -1,0 +1,216 @@
+* {
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px auto;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0px;
+}
+
+header h2 {
+    font-size: 18px;
+    margin: 0px;
+    color: #888;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0px;
+    display: block;
+    clear: right;
+    background-color: #666;
+    padding-left: 4px;
+    height: 24px;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0px 20px 5px 10px;
+    height: 24px;
+    border-right: 1px solid #ccc;
+}
+
+nav ul li a {
+    color: #EFD3D3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+article > header h1 {
+    font-size: 20px;
+    margin-left: 14px;
+}
+
+article > header h1 a {
+    color: #993333;
+}
+
+article > header h1 img {
+    vertical-align:middle;
+}
+
+article > section header h1 {
+    font-size: 16px;
+}
+
+article p {
+    clear: both;
+}
+
+article > section video {
+    width: 480px;
+    height: 200px;
+}
+
+article > section div.no-html5-video,
+article > section div#no-canvas {
+    width: 480px;
+    height: 40px;
+    border: 1px solid #993333;
+    text-align: center;
+    color: #993333;
+    font-size: 13px;
+    font-style: italic;
+    background-color: #F7E9E9;
+}
+
+article > section div#no-canvas {
+    display: none;
+}
+
+article > section form {
+    border: 1px solid #888;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;    
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    background-color: #eee;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+article > section label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+article > section input {
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+
+footer p {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 24px;
+}
+/*              ---------               */
+#screen{
+	width: 360px;
+	height: 610px;
+	overflow: hidden;
+}
+#wrapper{
+	width: 1080px;
+	height: 610px;
+	position: relative;
+}
+.page{
+	width: 360px;
+	height: 610px;
+}
+/*             Link Block Styles              */
+.linkBlockWrapper{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.linkBlock{
+	width: 60px;
+	height: 60px;
+	margin: 15px;
+	background: red;
+}
+/*              Animation Styles              */
+.on_first{
+	left: -360px;
+}
+.on_second{
+	left: -720px;
+}
+.on_third{
+	left: 0px;
+}
+.from_first_to_second{
+	-webkit-animation: a_from_first_to_second 0.2s linear;
+}
+@-webkit-keyframes a_from_first_to_second {
+	0% {left: -360px}
+	100% {left: -720px}
+}
+
+.from_first_to_third{
+	-webkit-animation: a_from_first_to_third 0.2s linear;
+}
+@-webkit-keyframes a_from_first_to_third {
+	0% {left: -360px}
+	100% {left: 0px}
+}
+
+.from_third_to_first{
+	-webkit-animation: a_from_third_to_first 0.2s linear;
+}
+@-webkit-keyframes a_from_third_to_first {
+	0% {left: 0px}
+	100% {left: -360px}
+}
+
+.from_second_to_first{
+	-webkit-animation: a_second_to_first 0.2s linear;
+}
+@-webkit-keyframes a_second_to_first {
+	0% {left: -720px}
+	100% {left: -360px}
+}
+/*                Global Styles               */
+.f_l{
+	float:left;
+}
+.f_r{
+	float:right;
+}
+.hidden{
+	display:none;
+}
+.visible{
+	display:block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

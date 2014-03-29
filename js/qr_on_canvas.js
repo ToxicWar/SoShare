@@ -14,7 +14,7 @@ function drawOnCanvasAsQR(canvas, text) {
 	
 	rc.save();
 	rc.clearRect(0, 0, w, h);
-	rc.scale(w/c*s, h/c*s);
+	rc.scale(w/c, h/c);
 	for (var i=0; i<c; i++) {
 		for (var j=0; j<c; j++) {
 			if (qr.isDark(j,i)) rc.fillRect(i, j, 1, 1);

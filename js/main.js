@@ -14,6 +14,11 @@ var init = function () {
     for (i = 0; i < links.lengh; i++){
     	links[i].addEventListener('ontouchstart', scrollPages)
     }
+    // Remove
+    var text = window.localStorage.test || "";
+    var elem = document.getElementById("test-storage");
+    elem.innerText = text;
+    // End remove
 };
 // window.onload can work without <body onload="">
 window.onload = init;
@@ -33,7 +38,11 @@ function generateQR(data){
 	//TODO
 }
 
-
-
-
+// Remove
+function testWrite(){
+	var elem = document.getElementById("test-name");
+	console.log(elem.value);
+	window.localStorage.test = elem.value;
+}
+// End remove
 

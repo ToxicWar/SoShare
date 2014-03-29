@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script src="js/main.js"></script>
+    <script src="js/storage.js"></script>
 </head>
 
 <body>
@@ -27,6 +28,11 @@
     <hgroup>
       <h1>Tizen app</h1>
       <h2>Page 1</h2>
+      <p id="test-storage"></p>
+      <form>
+		<input id="test-name" type="text"/>
+		<button id="test-button" onclick="testWrite()">Save</button>
+      </form>
     </hgroup>
   </header>
 

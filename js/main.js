@@ -6,14 +6,14 @@ var init = function () {
     console.log("init() called");
 
     document.addEventListener('tizenhwkey', tizenhwkey);
-    links = document.getElementsByClassName("link")
+    links = document.getElementsByClassName("link");
     for (i = 0; i < links.lengh; i++){
-    	links[i].addEventListener('ontouchstart', scrollPages)
+        links[i].addEventListener('ontouchstart', scrollPages);
     }
 
     var element = document.getElementById('page2');
     var hammertime = Hammer(element).on("swiperight", function(event) {
-    	scrollPages("first")
+        scrollPages("first");
     });
 };
 // window.onload can work without <body onload="">
@@ -25,7 +25,7 @@ function tizenhwkey(e){
 		if(!prevScreen) {
 			tizen.application.getCurrentApplication().exit();
 		} else {
-			scrollPages("first")
+			scrollPages("first");
 		}
 	}    
 }
@@ -34,11 +34,11 @@ function tizenhwkey(e){
 function scrollPages(target, data){
 	scroller = document.getElementById("wrapper");
 	if (target=="second" && data != undefined){
-		drawOnCanvasAsQR(QRcanvas, data)
+		drawOnCanvasAsQR(QRcanvas, data);
 	}
 	wrapper.className = "from_"+currPage+"_to_"+target+" on_"+ target;
 	currPage = target;
-	console.log("scrollPages called")
+	console.log("scrollPages called");
 
 	if(target == "first"){
 		prevScreen = false;
@@ -48,13 +48,13 @@ function scrollPages(target, data){
 }
 function foldUnfold(){
 	if (addButtState == "folded"){
-		addButtState = "unfolded"
+		addButtState = "unfolded";
 		addingButton.className = "mainAddingBlock from_fold_to_unfold "+ addButtState;
 	} else {
 		addButtState = "folded";
 		addingButton.className = "mainAddingBlock from_unfold_to_fold "+ addButtState;
 	}
-	console.log("fold called")
+	console.log("fold called");
 }
 
 // Remove

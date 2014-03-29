@@ -17,7 +17,8 @@ function drawOnCanvasAsQR(canvas, text) {
 	
 
 	var typeNumber = getBestTypeNumberForLength(text.length);
-	var qr = qrcode(typeNumber, 'L');
+
+	var qr = qrencode(typeNumber, 'L');
 
 	qr.addData(text);
 	qr.make();
@@ -38,7 +39,7 @@ function writeToCanvasAsQR(canvas, text) {
 	var rc = canvas.rc || canvas.getContext("2d");
 	var s = window.devicePixelRatio || 1;
 	
-	var qr = qrcode(1, 'L');
+	var qr = qrencode(1, 'L');
 	qr.addData(text);
 	qr.make();
 	var c = qr.getModuleCount();

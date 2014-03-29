@@ -1,5 +1,24 @@
+<script src="./js/libs/qrdecode/grid.js"></script>
+<script src="./js/libs/qrdecode/version.js"></script>
+<script src="./js/libs/qrdecode/detector.js"></script>
+<script src="./js/libs/qrdecode/formatinf.js"></script>
+<script src="./js/libs/qrdecode/errorlevel.js"></script>
+<script src="./js/libs/qrdecode/bitmat.js"></script>
+<script src="./js/libs/qrdecode/datablock.js"></script>
+<script src="./js/libs/qrdecode/bmparser.js"></script>
+<script src="./js/libs/qrdecode/datamask.js"></script>
+<script src="./js/libs/qrdecode/rsdecoder.js"></script>
+<script src="./js/libs/qrdecode/gf256poly.js"></script>
+<script src="./js/libs/qrdecode/gf256.js"></script>
+<script src="./js/libs/qrdecode/decoder.js"></script>
+<script src="./js/libs/qrdecode/qrcode.js"></script>
+<script src="./js/libs/qrdecode/findpat.js"></script>
+<script src="./js/libs/qrdecode/alignpat.js"></script>
+<script src="./js/libs/qrdecode/databr.js"></script>
+
 <script src="./js/libs/qrcode.js"></script>
 <script src="./js/qr_on_canvas.js"></script>
+
 <canvas id="canvas" style="width:148px; height:148px; outline:1px solid; background:gray;"></canvas>
 <br>
 <button onclick="drawTest(500)">draw test</button>
@@ -11,6 +30,7 @@
 <br>
 <input type="text" placeholder="text" id="text_to_qr"></input>
 <button onclick="drawOnCanvasAsQR(canvas, text_to_qr.value)">just draw it</button>
+
 <script>
 	function drawTest(iter) {
 		var stt = new Date().getTime();
@@ -26,11 +46,13 @@
 		for (var j=0; j<100; j++) {
 			var str = "";
 			for (var i=0; i<len; i++) str += String.fromCharCode(32+Math.random()*32000|0);
-			var qr = qrcode(typeNumber, 'L');
+			var qr = qrencode(typeNumber, 'L');
 			qr.addData(str);
 			qr.make();
 		}
 		console.log("OK")
 	}
 	//[0, 17, 32, 53, 78, 106, 134, 154, 192, 230, 271]
+	qrcode.callback = function(data) {console.log(data);}
+	qrcode.decode("images/test_qr.png");
 </script>

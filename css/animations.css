@@ -48,14 +48,14 @@
 	top: 0px;
 }
 .from_fold_to_unfold{
-	-webkit-animation: a_second_to_first 0.2s linear;
+	-webkit-animation: a_from_fold_to_unfold 0.2s linear;
 }
 @-webkit-keyframes a_from_fold_to_unfold {
 	0% {top: 580px}
 	100% {top: 0px}
 }
 .from_unfold_to_fold{
-	-webkit-animation: a_second_to_first 0.2s linear;
+	-webkit-animation: a_from_unfold_to_fold 0.2s linear;
 }
 @-webkit-keyframes a_from_unfold_to_fold {
 	0% {top: 0px}

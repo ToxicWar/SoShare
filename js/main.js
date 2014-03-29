@@ -49,10 +49,10 @@ function scrollPages(target, data){
 function foldUnfold(){
 	if (addButtState == "folded"){
 		addButtState = "unfolded"
-		addingButton.className = "from_fold_to_unfold "+ addButtState;
+		addingButton.className = "mainAddingBlock from_fold_to_unfold "+ addButtState;
 	} else {
 		addButtState = "folded";
-		addingButton.className = "from_unfold_to_fold "+ addButtState;
+		addingButton.className = "mainAddingBlock from_unfold_to_fold "+ addButtState;
 	}
 	console.log("fold called")
 }

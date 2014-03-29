@@ -161,9 +161,11 @@ footer p {
 	margin-top: 20px;
 	height: 300px;
 }
-.mainAddingButton{
+.mainAddingBlock{
 	font-size: 12pt;
 	background: grey;
+	border: 1px solid black;
+	height: 100px;
 }
 
 .listElem{

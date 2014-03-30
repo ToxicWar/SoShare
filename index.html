@@ -11,10 +11,34 @@
     <link rel="stylesheet" type="text/css" href="css/animations.css"/>
 	<script src="js/main.js"></script>
     <script src="js/libs/storage.js"></script>
+    <script src="js/libs/browser.js"></script>
     <script src="js/libs/qrcode.js"></script>
     <script src="js/libs/hammer.min.js"></script>
     <script src="js/libs/browser.js"></script>
     <script src="js/qr_on_canvas.js"></script>
+    <script src="js/utils.js"></script>
+ 
+	<!-- ШАРАХ! -->
+	<script src="./js/libs/qrdecode/grid.js"></script>
+	<script src="./js/libs/qrdecode/version.js"></script>
+	<script src="./js/libs/qrdecode/detector.js"></script>
+	<script src="./js/libs/qrdecode/formatinf.js"></script>
+	<script src="./js/libs/qrdecode/errorlevel.js"></script>
+	<script src="./js/libs/qrdecode/bitmat.js"></script>
+	<script src="./js/libs/qrdecode/datablock.js"></script>
+	<script src="./js/libs/qrdecode/bmparser.js"></script>
+	<script src="./js/libs/qrdecode/datamask.js"></script>
+	<script src="./js/libs/qrdecode/rsdecoder.js"></script>
+	<script src="./js/libs/qrdecode/gf256poly.js"></script>
+	<script src="./js/libs/qrdecode/gf256.js"></script>
+	<script src="./js/libs/qrdecode/decoder.js"></script>
+	<script src="./js/libs/qrdecode/qrcode.js"></script>
+	<script src="./js/libs/qrdecode/findpat.js"></script>
+	<script src="./js/libs/qrdecode/alignpat.js"></script>
+	<script src="./js/libs/qrdecode/databr.js"></script>
+	<!-- end ШАРАХ! -->
+
+	<script src="js/camera.js"></script>
 
 	<script src="js/initial_data.js"></script>
 </head>
@@ -43,10 +67,9 @@
 
 	<div class="mainPageWrapper">
 		<div id="mainPageContent">
-			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','http://vk.com/sdsdsdsd')">
+			<div id="linksListItemTemplate" style="display:none;">
 				<div class="listElem">
-					<div class="listElemIcon f_l">
-					</div>
+					<img class="listElemIcon f_l" />
 					<div class="listElemContent f_l">
 						<p class="listElemText listElemTitle">Павел Дуров</p>
 						<p class="listElemText listElemDescription">http://vk.com/id1</p>
@@ -55,6 +78,9 @@
 					 &gt;
 					</div>
 				</div>
+			</div>
+			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','http://vk.com/sdsdsdsd')">
+				<!-- links -->
 			</div>
 			<h1><a href="camera.html">Camera</a></h1>
 			<h1><a href="bluetooth.html">Bluetooth</a></h1>
@@ -94,5 +120,24 @@
 <div id="addNewForeignLinkTemplate" class="hidden">
 
 </div>
+
+<script>
+function addLinkItem(name, url, icon_path) {
+	var elem = linksListItemTemplate.cloneNode(true);
+	elem.id = null;
+	elem.style.display = null;
+	elem.getElementsByClassName("listElemTitle")[0].innerHTML = name;
+	elem.getElementsByClassName("listElemDescription")[0].innerHTML = url;
+	elem.getElementsByClassName("listElemIcon")[0].src = icon_path;
+	mainLinks.appendChild(elem);
+}
+//addLinkItem("Павел Дуров", "http://vk.com/id1");
+//addLinkItem("Вася Пупкин", "http://vk.com/id2");
+var idata = Storage.getVariable('initial_data');
+for (var i=0; i<idata.length; i++) {
+	addLinkItem(idata[i].title, idata[i].url, idata[i].icon);
+}
+</script>
+
 </body>
 </html>

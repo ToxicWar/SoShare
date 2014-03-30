@@ -29,6 +29,7 @@
 	var selfCamera;
 	function SelfCamera(qrCallback) {
 		qrcode.callback = qrCallback;
+		qrcode.debug = true;
 	};
 
 	(function () {
@@ -120,19 +121,25 @@
 			
 			if (this.video.videoWidth <= 0 || this.video.videoHeight <= 0) return;
 	
-			if (w && w < this.video.videoWidth) {
-				this.img.width = w;
-				this.img.height = w / this.video.videoWidth * this.video.videoHeight;
-			} else {
-				this.img.width = this.video.videoWidth;
-				this.img.height = this.video.videoHeight;
-			}
+			var scale = w ? Math.min(Math.min(w/this.video.videoWidth, w/this.video.videoHeight), 1) : 1;
+			
+			this.img.width = this.video.videoWidth * scale;
+			this.img.height = this.video.videoHeight * scale;
+			
+			console.log(" --- captiring with size: "+this.img.width+"x"+this.img.height+" --- ");
 			var rc = this.img.getContext('2d');
 			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
+			console.log(" --- drawing on canvas --- ");
 			rc.drawImage(this.video, 0, 0);
 			try {
+				console.log(" --- starting decode --- ");
 				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
-			} catch(e) {}
+				console.log(" --- decoded (or not) --- ");
+			} catch(e) {
+				console.log(e);
+				if (e.stack){ console.log(e.stack) }
+				dbg.innerText = e.toString();
+			}
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {
@@ -214,5 +221,6 @@
 </script>
 <body style="margin: 0; overflow: hidden;">
 	<div id="camera"></div>
+	<div id="dbg" style="position: fixed; left:0; top:0; z-index:100; color:white;">qwe</div>
 </body>
 </html>

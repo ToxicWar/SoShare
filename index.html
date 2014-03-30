@@ -129,7 +129,7 @@ function addLinkItem(name, url, icon_path) {
 	elem.getElementsByClassName("listElemTitle")[0].innerHTML = name;
 	elem.getElementsByClassName("listElemDescription")[0].innerHTML = url;
 	elem.getElementsByClassName("listElemIcon")[0].src = icon_path;
-	elem.ontouchstart = scrollPages('second', url);
+	elem.ontouchstart = function(){ scrollPages('second', url) };
 	mainLinks.appendChild(elem);
 }
 //addLinkItem("Павел Дуров", "http://vk.com/id1");

@@ -8,7 +8,7 @@ var init = function () {
 
     document.addEventListener('tizenhwkey', tizenhwkey);
     links = document.getElementsByClassName("link");
-    for (i = 0; i < links.lengh; i++){
+    for (i = 0; i < links.lengh; i++) {
         links[i].addEventListener('ontouchstart', scrollPages);
     }
 

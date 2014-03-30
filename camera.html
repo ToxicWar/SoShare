@@ -131,7 +131,9 @@
 			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
 			rc.drawImage(this.video, 0, 0);
 			try {
+				console.log(" --- starting decode ("+this.img.width+"x"+this.img.height+") --- ");
 				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
+				console.log(" --- decoded (or not) --- ");
 			} catch(e) {console.log(e)}
 		};
 	

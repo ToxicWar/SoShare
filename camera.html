@@ -132,7 +132,7 @@
 			rc.drawImage(this.video, 0, 0);
 			try {
 				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
-			} catch(e) {}
+			} catch(e) {console.log(e)}
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {

@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <script src="js/libs/jquery.min.js"></script>
+<script src="./js/utils.js"></script>
 <!-- ШАРАХ! -->
 <script src="./js/libs/qrdecode/grid.js"></script>
 <script src="./js/libs/qrdecode/version.js"></script>
@@ -48,6 +49,7 @@
 			this.isMediaWorking = true;
 			this.createCanvas();
 			this.createVideoElement(urlStream);
+			setInterval(this.captureImage.bind(this, 320), 1000);
 		};
 		
 		SelfCamera.prototype.createCanvas = function() {
@@ -115,10 +117,15 @@
 	
 			// Crop image to viewport dimension
 			this.img.getContext('2d').drawImage(video, sourceX, sourceY, $(video).width(), $(video).height());*/
+			
+			if (this.video.videoWidth <= 0 || this.video.videoHeight <= 0) return;
 	
 			if (w && w < this.video.videoWidth) {
 				this.img.width = w;
 				this.img.height = w / this.video.videoWidth * this.video.videoHeight;
+			} else {
+				this.img.width = this.video.videoWidth;
+				this.img.height = this.video.videoHeight;
 			}
 			var rc = this.img.getContext('2d');
 			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
@@ -197,7 +204,6 @@
 			var self = this;
 			self.startPreview();
 			self.bindEvents();
-			setInterval(function(){ self.captureImage(320) }, 1000);
 		};
 	
 	}());

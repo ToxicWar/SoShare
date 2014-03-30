@@ -7,10 +7,10 @@ var init = function () {
     console.log("init() called");
 
     document.addEventListener('tizenhwkey', tizenhwkey);
-    links = document.getElementsByClassName("link");
+    /*links = document.getElementsByClassName("link");
     for (i = 0; i < links.lengh; i++) {
         links[i].addEventListener('ontouchstart', scrollPages);
-    }
+    }*/
 
     var element = document.getElementById('page2');
     var hammertime = Hammer(element).on("swiperight", function(event) {
@@ -29,14 +29,15 @@ function tizenhwkey(e){
 		} else {
 			scrollPages("first");
 		}
-	}    
+	}
 }
 
 
-function scrollPages(target, data){
+function scrollPages(target, name, data){
 	scroller = document.getElementById("wrapper");
-	if (target=="second" && data != undefined){
+	if (target == "second" && data != undefined){
 		drawOnCanvasAsQR(QRcanvas, data);
+		QRtitleText.innerText = name;
 		QRlink.innerText = data;
 	}
 	wrapper.className = "from_"+currPage+"_to_"+target+" on_"+ target;

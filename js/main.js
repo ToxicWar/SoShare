@@ -37,6 +37,7 @@ function scrollPages(target, data){
 	scroller = document.getElementById("wrapper");
 	if (target=="second" && data != undefined){
 		drawOnCanvasAsQR(QRcanvas, data);
+		QRlink.innerText = data;
 	}
 	wrapper.className = "from_"+currPage+"_to_"+target+" on_"+ target;
 	currPage = target;

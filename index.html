@@ -42,7 +42,7 @@
 
 	<div class="mainPageWrapper">
 		<div id="mainPageContent">
-			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','http://vk.com/sdsdsdsd')">
+			<div id="linksListItemTemplate" style="display:none;">
 				<div class="listElem">
 					<div class="listElemIcon f_l">
 					</div>
@@ -54,6 +54,9 @@
 					 &gt;
 					</div>
 				</div>
+			</div>
+			<div class="linksList" id="mainLinks" ontouchstart="scrollPages('second','http://vk.com/sdsdsdsd')">
+				<!-- links -->
 			</div>
 			<h1><a href="camera.html">Camera</a></h1>
 			<h1><a href="bluetooth.html">Bluetooth</a></h1>
@@ -88,5 +91,19 @@ awfawffwa
 <div id="addNewForeignLinkTemplate" class="hidden">
 
 </div>
+
+<script>
+function addLinkItem(name, url) {
+	var elem = linksListItemTemplate.cloneNode(true);
+	elem.id = null;
+	elem.style.display = null;
+	elem.getElementsByClassName("listElemText listElemTitle")[0].innerHTML = name;
+	elem.getElementsByClassName("listElemText listElemDescription")[0].innerHTML = url;
+	mainLinks.appendChild(elem);
+}
+addLinkItem("Павел Дуров", "http://vk.com/id1");
+addLinkItem("Вася Пупкин", "http://vk.com/id2");
+</script>
+
 </body>
 </html>

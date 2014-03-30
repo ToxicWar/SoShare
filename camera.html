@@ -136,7 +136,7 @@
 				console.log(" --- starting decode --- ");
 				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
 				console.log(" --- decoded (or not) --- ");
-			} catch(e) {console.log(e)}
+			} catch(e) {console.log(e); if (e.stack){ console.log(e.stack) }}
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {

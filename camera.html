@@ -120,13 +120,12 @@
 			
 			if (this.video.videoWidth <= 0 || this.video.videoHeight <= 0) return;
 	
-			if (w && w < this.video.videoWidth) {
-				this.img.width = w;
-				this.img.height = w / this.video.videoWidth * this.video.videoHeight;
-			} else {
-				this.img.width = this.video.videoWidth;
-				this.img.height = this.video.videoHeight;
-			}
+			var scale = Math.min(w/this.video.videoWidth, w/this.video.videoHeight);
+			if (scale > 1) scale = 1;
+			
+			this.img.width = this.video.videoWidth * scale;
+			this.img.height = this.video.videoHeight * scale;
+			
 			console.log(" --- captiring with size: "+this.img.width+"x"+this.img.height+" --- ");
 			var rc = this.img.getContext('2d');
 			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);

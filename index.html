@@ -13,6 +13,7 @@
     <script src="js/libs/storage.js"></script>
     <script src="js/libs/qrcode.js"></script>
     <script src="js/libs/hammer.min.js"></script>
+    <script src="js/libs/browser.js"></script>
     <script src="js/qr_on_canvas.js"></script>
 
 	<script src="js/initial_data.js"></script>
@@ -32,10 +33,10 @@
 
 	<div class="nav">
       <div class="mainHeadButton f_l mainHeadButtonSelected" id="showMyListButt" ontouchstart="switchSelectedLinkList(this)">
-      	<center>Tizen app</center>
+      	<center>Мои ссылки</center>
       </div>
       <div class="mainHeadButton f_l" id="showForeignListButt" ontouchstart="switchSelectedLinkList(this)">
-      	<center>Не Tizen app</center>
+      	<center>История сканов</center>
       </div>
 	</div>
 	
@@ -83,7 +84,12 @@
 </div>
 </div>
 <div id="addNewLinkTemplate" class="hidden">
-awfawffwa
+	<input type="text" size="40" value="URL" class="inputForm">
+	<input type="text" size="40" value="Название ссылки" class="inputForm">
+	<input type="text" size="40" value="Комментарий" class="inputForm">
+	<div class="saveButton">
+		<center>Сохранить</center>
+	</div>
 </div>
 <div id="addNewForeignLinkTemplate" class="hidden">
 

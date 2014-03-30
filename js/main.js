@@ -51,10 +51,13 @@ function scrollPages(target, data){
 function foldUnfold(){
 	if (addButtState == "folded"){
 		addButtState = "unfolded";
-		addingButton.className = "mainAddingBlock from_fold_to_unfold "+ addButtState;
+		addingButton.className = "mainAddingBlock from_fold_to_unfold mainHeadButtonSelected"+ addButtState;
+		prevScreen = true;
+		
 	} else {
 		addButtState = "folded";
 		addingButton.className = "mainAddingBlock from_unfold_to_fold "+ addButtState;
+		prevScreen = false;
 	}
 	console.log("fold called");
 }
@@ -64,7 +67,7 @@ function switchSelectedLinkList(el){ //todo change bottom sliding screen inner h
 		showMyListButt.className = "mainHeadButton f_l";
 		showForeignListButt.className = "mainHeadButton f_l mainHeadButtonSelected";
 		isMyList = false
-		bottomSliderWrapper.innerHTML = addNewForeignLinkTemplate.innerHTML;
+		bottomSliderWrapper.innerHTML = "<div id='camera'></div";
 		bottomSliderText.innerHTML = "Сканировать" 
 		console.log("opened foreign list")
 	} else {

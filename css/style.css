@@ -160,7 +160,7 @@ footer p {
 	background: #ebebeb;
 }
 .mainHeadButtonSelected{
-	border-bottom: 4px solid blue;
+	border-bottom: 4px solid #236fc8;
 }
 #showForeignListButt{
 	border-left: 1px solid #888;
@@ -209,7 +209,23 @@ footer p {
 	padding-top: 15px;
 	height: 36px;
 }
-
+.saveButton{
+	background: #ebebeb;
+	padding-top: 15px;
+	height: 36px;
+	position: relative;
+	top: 100px;
+}
+/*         Add My Link Template Styles        */
+.inputForm{
+	height: 41px;
+	background: #ebebeb;
+	width: 330px;
+	margin: 10px 10px;
+	color: #236fc8;
+	border: none;
+	padding-left: 10px;
+}
 /*             Canvas Page Styles             */
 .QRtitle{
 	width: 100%;
@@ -225,7 +241,7 @@ footer p {
 #QRlink{
 	color: blue;
 	text-decoration: underline;
-	margin-left: 10px;
+	margin: 0 10px;
 	font-size: 12pt;
 }
 /*                Global Styles               */

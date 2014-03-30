@@ -114,10 +114,8 @@ var selfCamera;
 			console.log(" --- captiring with size: "+this.img.width+"x"+this.img.height+" --- ");
 			var rc = this.img.getContext('2d');
 			
-			//rc.translate(this.img.width, 0);
-			//rc.scale(-this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
-			rc.scale(this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
-			
+			rc.translate(this.img.width, 0);
+			rc.scale(-this.img.width/this.video.videoWidth, this.img.height/this.video.videoHeight);
 			console.log(" --- drawing on canvas --- ");
 			rc.drawImage(this.video, 0, 0);
 			try {

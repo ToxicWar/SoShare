@@ -217,7 +217,7 @@
 	
 	}());
 	
-	selfCamera = new SelfCamera(function(data){ alert(data) });
+	selfCamera = new SelfCamera(function(data){ Browser.openUrl(data); });
 	document.onload = selfCamera.init();
 
 </script>

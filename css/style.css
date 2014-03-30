@@ -152,10 +152,14 @@ footer p {
 	width: 50%;
 	height: 50px;
 	padding-top: 25px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.mainHeadButtonSelected{
+	border-bottom: 4px solid blue;
 }
 #showForeignListButt{
 	border-left: 1px solid #888;
-	margin-left: -1px;
 }
 .mainPageWrapper{
 	margin-top: 20px;

@@ -57,6 +57,16 @@ function foldUnfold(){
 	console.log("fold called");
 }
 
+function switchSelectedLinkList(el){
+	if (el.className == "mainHeadButton f_l mainHeadButtonSelected"){
+		el.className = "mainHeadButton f_l";
+		
+	} else {
+		el.className = "mainHeadButton f_l mainHeadButtonSelected";
+		
+	}
+	console.log("switchSelectedLinkList called");
+}
 // Remove
 function testWrite(){
 	var elem = document.getElementById("test-name");

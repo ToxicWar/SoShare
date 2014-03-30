@@ -68,8 +68,7 @@
 		<div id="mainPageContent">
 			<div id="linksListItemTemplate" style="display:none;">
 				<div class="listElem">
-					<div class="listElemIcon f_l">
-					</div>
+					<img class="listElemIcon f_l" />
 					<div class="listElemContent f_l">
 						<p class="listElemText listElemTitle">Павел Дуров</p>
 						<p class="listElemText listElemDescription">http://vk.com/id1</p>
@@ -117,16 +116,21 @@ awfawffwa
 </div>
 
 <script>
-function addLinkItem(name, url) {
+function addLinkItem(name, url, icon_path) {
 	var elem = linksListItemTemplate.cloneNode(true);
 	elem.id = null;
 	elem.style.display = null;
-	elem.getElementsByClassName("listElemText listElemTitle")[0].innerHTML = name;
-	elem.getElementsByClassName("listElemText listElemDescription")[0].innerHTML = url;
+	elem.getElementsByClassName("listElemTitle")[0].innerHTML = name;
+	elem.getElementsByClassName("listElemDescription")[0].innerHTML = url;
+	elem.getElementsByClassName("listElemIcon")[0].src = icon_path;
 	mainLinks.appendChild(elem);
 }
-addLinkItem("Павел Дуров", "http://vk.com/id1");
-addLinkItem("Вася Пупкин", "http://vk.com/id2");
+//addLinkItem("Павел Дуров", "http://vk.com/id1");
+//addLinkItem("Вася Пупкин", "http://vk.com/id2");
+var idata = Storage.getVariable('initial_data');
+for (var i=0; i<idata.length; i++) {
+	addLinkItem(idata[i].title, idata[i].url, idata[i].icon);
+}
 </script>
 
 </body>

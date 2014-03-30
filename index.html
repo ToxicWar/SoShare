@@ -58,18 +58,33 @@
 			<div class="linksList" id="foreignLinks"></div>
 		</div>
 	</div>
-	<div class="mainAddingBlock folded" id="addingButton" ontouchstart="foldUnfold()">
-		<center>Добавить ссылку</center>
+	<div class="mainAddingBlock folded" id="addingButton"">
+		<div id="bottomSliderButton"  ontouchstart="foldUnfold()">
+			<center id="bottomSliderText">Добавить ссылку</center>
+		</div>
+		<div id="bottomSliderWrapper">
+		
+		</div>
 	</div>
 </div>
                                          <!-- canvas screen -->
 <div class="page f_l" id="page2">
-
+	<div class="nav">
+      <div class="QRtitle">
+		<center id="QRtitleText">Павел Дуров</center>
+      </div>
+	</div>
 		<canvas id="QRcanvas" class="canvas"></canvas>
-  	<button ontouchstart="scrollPages('first')">&lt;---</button>
+	<div id="QRlink" ontouchstart="Browser.openUrl(this.innerHTML);">http://asdasdasd</div>
 </div>
 
 </div>
+</div>
+<div id="addNewLinkTemplate" class="hidden">
+awfawffwa
+</div>
+<div id="addNewForeignLinkTemplate" class="hidden">
+
 </div>
 </body>
 </html>

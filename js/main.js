@@ -1,4 +1,5 @@
 var currPage = "first";
+var isMyList = true;
 var prevScreen = false;
 var addButtState = "folded";
 var init = function () {
@@ -15,6 +16,7 @@ var init = function () {
     var hammertime = Hammer(element).on("swiperight", function(event) {
         scrollPages("first");
     });
+    bottomSliderWrapper.innerHTML = addNewLinkTemplate.innerHTML;
 };
 // window.onload can work without <body onload="">
 window.onload = init;
@@ -57,21 +59,23 @@ function foldUnfold(){
 	console.log("fold called");
 }
 
-function switchSelectedLinkList(el){
-	if (el.className == "mainHeadButton f_l mainHeadButtonSelected"){
-		el.className = "mainHeadButton f_l";
-		
+function switchSelectedLinkList(el){ //todo change bottom sliding screen inner html
+	if (isMyList){
+		showMyListButt.className = "mainHeadButton f_l";
+		showForeignListButt.className = "mainHeadButton f_l mainHeadButtonSelected";
+		isMyList = false
+		bottomSliderWrapper.innerHTML = addNewForeignLinkTemplate.innerHTML;
+		bottomSliderText.innerHTML = "Сканировать" 
+		console.log("opened foreign list")
 	} else {
-		el.className = "mainHeadButton f_l mainHeadButtonSelected";
-		
+		showMyListButt.className = "mainHeadButton f_l mainHeadButtonSelected";
+		showForeignListButt.className = "mainHeadButton f_l";
+		bottomSliderWrapper.innerHTML = addNewLinkTemplate.innerHTML;
+		bottomSliderText.innerHTML = "Добавить ссылку" 
+		isMyList = true
+		console.log("opened my list")
 	}
 	console.log("switchSelectedLinkList called");
 }
-// Remove
-function testWrite(){
-	var elem = document.getElementById("test-name");
-	console.log(elem.value);
-	window.localStorage.test = elem.value;
-}
-// End remove
+
 

@@ -99,11 +99,11 @@
                                          <!-- canvas screen -->
 <div class="page f_l" id="page2">
 	<div class="nav">
-      <div class="QRtitle">
-		<center id="QRtitleText">Павел Дуров</center>
-      </div>
+		<div class="QRtitle">
+			<center id="QRtitleText">Павел Дуров</center>
+		</div>
 	</div>
-		<canvas id="QRcanvas" class="canvas"></canvas>
+	<canvas id="QRcanvas" class="canvas"></canvas>
 	<div id="QRlink" ontouchstart="Browser.openUrl(this.innerHTML);">http://asdasdasd</div>
 </div>
 
@@ -129,6 +129,7 @@ function addLinkItem(name, url, icon_path) {
 	elem.getElementsByClassName("listElemTitle")[0].innerHTML = name;
 	elem.getElementsByClassName("listElemDescription")[0].innerHTML = url;
 	elem.getElementsByClassName("listElemIcon")[0].src = icon_path;
+	elem.ontouchstart = scrollPages('second', url);
 	mainLinks.appendChild(elem);
 }
 //addLinkItem("Павел Дуров", "http://vk.com/id1");

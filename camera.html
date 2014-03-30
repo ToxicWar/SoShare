@@ -30,7 +30,7 @@
 	var selfCamera;
 	function SelfCamera(qrCallback) {
 		qrcode.callback = qrCallback;
-		qrcode.debug = true;
+		//qrcode.debug = true;
 	};
 
 	(function () {
@@ -67,9 +67,22 @@
 			//    ищет канвас с id='qr-canvas',
 			//    распознаёт с getImageData канваса
 			// ИМХО пара новых канвасов в секунду - не лучшая идея, поэтому вариант (2)
-			this.img.style.position = 'fixed';
-			this.img.style.top = this.img.style.left = 0;
-			//this.img.style.display = 'none';
+			
+			if (qrcode.debug) {
+				this.img.style.position = 'fixed';
+				this.img.style.top = this.img.style.left = 0;
+				
+				var div = document.createElement("div");
+				div.id = 'dbg';
+				div.style.position = 'fixed';
+				div.style.left = 0;
+				div.style.top = 0;
+				div.style.zIndex = 100;
+				div.style.color = 'white';
+				document.body.appendChild(div);
+			} else {
+				this.img.style.display = 'none';
+			}
 			document.body.appendChild(this.img); // а это чтоб getElementById его нашёл
 		}
 	
@@ -141,7 +154,7 @@
 			} catch(e) {
 				console.log(e);
 				if (e.stack){ console.log(e.stack) }
-				dbg.innerText = e.toString();
+				if (qrcode.debug) dbg.innerText = e.toString();
 			}
 		};
 	
@@ -224,6 +237,5 @@
 </script>
 <body style="margin: 0; overflow: hidden;">
 	<div id="camera"></div>
-	<div id="dbg" style="position: fixed; left:0; top:0; z-index:100; color:white;">qwe</div>
 </body>
 </html>

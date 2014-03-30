@@ -29,6 +29,7 @@
 	var selfCamera;
 	function SelfCamera(qrCallback) {
 		qrcode.callback = qrCallback;
+		qrcode.debug = true;
 	};
 
 	(function () {
@@ -134,7 +135,11 @@
 				console.log(" --- starting decode --- ");
 				qrcode.decode(); // капчуринг из канваса #qr-canvas здесь
 				console.log(" --- decoded (or not) --- ");
-			} catch(e) {console.log(e); if (e.stack){ console.log(e.stack) }}
+			} catch(e) {
+				console.log(e);
+				if (e.stack){ console.log(e.stack) }
+				dbg.innerText = e.toString();
+			}
 		};
 	
 		SelfCamera.prototype.resizeVideo = function() {
@@ -216,5 +221,6 @@
 </script>
 <body style="margin: 0; overflow: hidden;">
 	<div id="camera"></div>
+	<div id="dbg" style="position: fixed; left:0; top:0; z-index:100; color:white;">qwe</div>
 </body>
 </html>
